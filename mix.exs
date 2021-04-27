@@ -11,6 +11,7 @@ defmodule HL7.MixProject do
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
+      dialyzer: dialyzer_opts(),
       docs: [
         extras: ["README.md"],
         main: "readme"
@@ -45,6 +46,15 @@ defmodule HL7.MixProject do
       {:ex_doc, "~> 0.19", only: :dev, runtime: false},
       {:junit_formatter, "~> 3.0", only: :test},
       {:propcheck, "~> 1.1", only: [:test, :dev]}
+    ]
+  end
+
+  defp dialyzer_opts do
+    [
+      plt_add_apps: [:mix, :ex_unit],
+      remove_defaults: [:unknown],
+      plt_core_path: "priv/plts",
+      plt_file: {:no_warn, "priv/plts/hl7.plt"}
     ]
   end
 end
