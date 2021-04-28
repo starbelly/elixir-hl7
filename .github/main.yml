@@ -3,7 +3,8 @@ name: test
 on:
   push:
     branches:
-      - main
+      - master
+      - setup-github-ci
   pull_request:
     types: [opened, synchronize]
 
